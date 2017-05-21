@@ -9,7 +9,7 @@ public class Interfata extends javax.swing.JFrame
     PreparedStatement prep = null;
     ResultSet result = null;
     
-    
+    //
     public Interfata()
     {
         initComponents();
