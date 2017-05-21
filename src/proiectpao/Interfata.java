@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class Interfata extends javax.swing.JFrame
 {
-    Connection conexiune = null;
+    Connection conexiune;
     PreparedStatement prep = null;
     ResultSet result = null;
     
@@ -16,7 +16,7 @@ public class Interfata extends javax.swing.JFrame
         try
         {
            Class.forName("com.mysql.jdbc.Driver");
-           Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test", "root", "cactus121" );
+           conexiune = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "cactus121" );
            System.out.println("Connected");
         }
         catch(Exception e)
@@ -195,8 +195,26 @@ public class Interfata extends javax.swing.JFrame
        String email = jTextFieldEmail.getText();
        String username = jTextFieldUsername.getText();
        String parola = jTextFieldParola.getText();
-   
+       String sql = "insert into persons(Nume, Prenume, Email, Username, Parola, Port, Victorii, Infrangeri)"
+               + "values(?,?,?,?,?,?,?,?)";
+       try
+       {
+           prep = conexiune.prepareStatement(sql);
+           prep.setString(1, nume);
+           prep.setString(2, prenume);
+           prep.setString(3, email);
+           prep.setString(4, username);
+           prep.setString(5, parola);
+           prep.setInt(6, 0); //trebuie sa ma prind cum sa ii aloc unui user un port
+           prep.setInt(7, 0);
+           prep.setInt(8, 0);
+           System.out.println("Registered");
+           prep.execute(); 
        
+       }catch(Exception e)
+       {
+           e.printStackTrace();
+       }
               
     }//GEN-LAST:event_RegisterActionPerformed
 
