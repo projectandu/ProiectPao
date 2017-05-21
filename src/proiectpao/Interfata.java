@@ -40,9 +40,16 @@ public class Interfata extends javax.swing.JFrame
         jTextFieldPrenume = new javax.swing.JTextField();
         jTextFieldUsername = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldParola = new javax.swing.JTextField();
         Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jTextFieldParola = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextUsernameLogin = new javax.swing.JTextField();
+        jPasswordFieldParolaLogin = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,15 +108,6 @@ public class Interfata extends javax.swing.JFrame
             }
         });
 
-        jTextFieldParola.setText(" ");
-        jTextFieldParola.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jTextFieldParolaActionPerformed(evt);
-            }
-        });
-
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener()
         {
@@ -121,12 +119,26 @@ public class Interfata extends javax.swing.JFrame
 
         jLabel5.setText("*Daca vrei sa dai login, atunci nu e nevoie sa completezi decat username si parola");
 
+        jTextFieldParola.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jTextFieldParolaActionPerformed(evt);
+            }
+        });
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel9.setText("Username");
+
+        jLabel10.setText("Parola");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,53 +148,83 @@ public class Interfata extends javax.swing.JFrame
                             .addComponent(jLabel6)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldNume, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldPrenume, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldParola, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(200, 200, 200))
+                            .addComponent(jTextFieldPrenume, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNume, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldParola))
+                        .addGap(26, 26, 26)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextUsernameLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldParolaLogin)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Register)
-                        .addGap(102, 102, 102)
-                        .addComponent(Login)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Register)
+                            .addGap(237, 237, 237)
+                            .addComponent(Login))
+                        .addComponent(jLabel5)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldNume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldPrenume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldParola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextFieldNume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldPrenume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextFieldParola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jTextUsernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jPasswordFieldParolaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Register)
                     .addComponent(Login))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel5)
-                .addGap(41, 41, 41))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -195,22 +237,23 @@ public class Interfata extends javax.swing.JFrame
        String email = jTextFieldEmail.getText();
        String username = jTextFieldUsername.getText();
        String parola = jTextFieldParola.getText();
-       String sql = "insert into persons(Nume, Prenume, Email, Username, Parola, Port, Victorii, Infrangeri)"
-               + "values(?,?,?,?,?,?,?,?)";
+       String sql = "insert into persons(Nume, Prenume, Email, Username, Parola,  Victorii, Infrangeri)"
+               + "values(?,?,?,?,?,?,?)";
        try
        {
+           jLabel8.setText("Username sau email deja folosit");
            prep = conexiune.prepareStatement(sql);
            prep.setString(1, nume);
            prep.setString(2, prenume);
            prep.setString(3, email);
            prep.setString(4, username);
            prep.setString(5, parola);
-           prep.setInt(6, 0); //trebuie sa ma prind cum sa ii aloc unui user un port
+           prep.setInt(6, 0);
            prep.setInt(7, 0);
-           prep.setInt(8, 0);
-           System.out.println("Registered");
-           prep.execute(); 
-       
+           prep.execute();
+           jLabel8.setText("");
+               
+           
        }catch(Exception e)
        {
            e.printStackTrace();
@@ -240,17 +283,35 @@ public class Interfata extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LoginActionPerformed
+    {//GEN-HEADEREND:event_LoginActionPerformed
+
+        String username =  jTextUsernameLogin.getText() ;
+        String parola =jPasswordFieldParolaLogin.getText() ;
+        String sql = "select * from persons where username = ? and parola = ?;";
+       
+        try
+        {
+            prep = conexiune.prepareStatement(sql);
+            prep.setString(1, username);
+            prep.setString(2, parola); 
+            System.out.println(sql);
+            result = prep.executeQuery();
+            if(result.next())
+                System.out.println("Totul e ok");
+            else
+                jLabel8.setText("Username sau parola incorecte");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_LoginActionPerformed
+
     private void jTextFieldParolaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextFieldParolaActionPerformed
     {//GEN-HEADEREND:event_jTextFieldParolaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldParolaActionPerformed
-
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LoginActionPerformed
-    {//GEN-HEADEREND:event_LoginActionPerformed
-
-        String username = jTextFieldUsername.getText();
-        String parola = jTextFieldParola.getText();
-    }//GEN-LAST:event_LoginActionPerformed
 
     public static void main(String args[])
     {
@@ -298,15 +359,22 @@ public class Interfata extends javax.swing.JFrame
     private javax.swing.JButton Login;
     private javax.swing.JButton Register;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordFieldParolaLogin;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNume;
-    private javax.swing.JTextField jTextFieldParola;
+    private javax.swing.JPasswordField jTextFieldParola;
     private javax.swing.JTextField jTextFieldPrenume;
     private javax.swing.JTextField jTextFieldUsername;
+    private javax.swing.JTextField jTextUsernameLogin;
     // End of variables declaration//GEN-END:variables
 }
