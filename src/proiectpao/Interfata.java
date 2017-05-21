@@ -9,14 +9,14 @@ public class Interfata extends javax.swing.JFrame
     PreparedStatement prep = null;
     ResultSet result = null;
     
-    //
+    
     public Interfata()
     {
         initComponents();
         try
         {
            Class.forName("com.mysql.jdbc.Driver");
-           Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "cactus121" );
+           Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Test", "root", "cactus121" );
            System.out.println("Connected");
         }
         catch(Exception e)
@@ -35,13 +35,13 @@ public class Interfata extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
         jTextFieldNume = new javax.swing.JTextField();
         jTextFieldPrenume = new javax.swing.JTextField();
         jTextFieldUsername = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldParola = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,12 +56,12 @@ public class Interfata extends javax.swing.JFrame
 
         jLabel6.setText("Parola");
 
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        Register.setText("Register");
+        Register.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                RegisterActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,14 @@ public class Interfata extends javax.swing.JFrame
             }
         });
 
-        jButton2.setText("Login");
+        Login.setText("Login");
+        Login.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                LoginActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("*Daca vrei sa dai login, atunci nu e nevoie sa completezi decat username si parola");
 
@@ -137,9 +144,9 @@ public class Interfata extends javax.swing.JFrame
                             .addComponent(jTextFieldParola, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(200, 200, 200))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(Register)
                         .addGap(102, 102, 102)
-                        .addComponent(jButton2)
+                        .addComponent(Login)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -171,8 +178,8 @@ public class Interfata extends javax.swing.JFrame
                     .addComponent(jTextFieldParola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Register)
+                    .addComponent(Login))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel5)
                 .addGap(41, 41, 41))
@@ -181,17 +188,19 @@ public class Interfata extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_RegisterActionPerformed
+    {//GEN-HEADEREND:event_RegisterActionPerformed
        String nume = jTextFieldNume.getText();
        String prenume = jTextFieldPrenume.getText();
        String email = jTextFieldEmail.getText();
        String username = jTextFieldUsername.getText();
        String parola = jTextFieldParola.getText();
+   
        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+              
+    }//GEN-LAST:event_RegisterActionPerformed
+
+                                    
 
     private void jTextFieldNumeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTextFieldNumeActionPerformed
     {//GEN-HEADEREND:event_jTextFieldNumeActionPerformed
@@ -217,6 +226,13 @@ public class Interfata extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jTextFieldParolaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldParolaActionPerformed
+
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_LoginActionPerformed
+    {//GEN-HEADEREND:event_LoginActionPerformed
+
+        String username = jTextFieldUsername.getText();
+        String parola = jTextFieldParola.getText();
+    }//GEN-LAST:event_LoginActionPerformed
 
     public static void main(String args[])
     {
@@ -261,8 +277,8 @@ public class Interfata extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Login;
+    private javax.swing.JButton Register;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
