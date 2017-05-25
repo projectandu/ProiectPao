@@ -16,7 +16,7 @@ public class Interfata extends javax.swing.JFrame
         try
         {
            Class.forName("com.mysql.jdbc.Driver");
-           conexiune = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "cactus121" );
+           conexiune = DriverManager.getConnection("jdbc:mysql://localhost:3306/test");
            System.out.println("Connected");
         }
         catch(Exception e)
@@ -41,7 +41,6 @@ public class Interfata extends javax.swing.JFrame
         jTextFieldUsername = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         Login = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jTextFieldParola = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -117,8 +116,6 @@ public class Interfata extends javax.swing.JFrame
             }
         });
 
-        jLabel5.setText("*Daca vrei sa dai login, atunci nu e nevoie sa completezi decat username si parola");
-
         jTextFieldParola.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -172,12 +169,11 @@ public class Interfata extends javax.swing.JFrame
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(Register)
-                            .addGap(237, 237, 237)
-                            .addComponent(Login))
-                        .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(Register)
+                        .addGap(237, 237, 237)
+                        .addComponent(Login)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -218,9 +214,7 @@ public class Interfata extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Register)
                     .addComponent(Login))
-                .addGap(33, 33, 33)
-                .addComponent(jLabel5)
-                .addGap(11, 11, 11)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
@@ -237,8 +231,8 @@ public class Interfata extends javax.swing.JFrame
        String email = jTextFieldEmail.getText();
        String username = jTextFieldUsername.getText();
        String parola = jTextFieldParola.getText();
-       String sql = "insert into persons(Nume, Prenume, Email, Username, Parola,  Victorii, Infrangeri)"
-               + "values(?,?,?,?,?,?,?)";
+       String sql = "insert into persons(Nume, Prenume, Email, Username, Parola,  Victorii, Infrangeri, Online)"
+               + "values(?,?,?,?,?,?,?,?)";
        try
        {
            jLabel8.setText("Username sau email deja folosit");
@@ -250,6 +244,8 @@ public class Interfata extends javax.swing.JFrame
            prep.setString(5, parola);
            prep.setInt(6, 0);
            prep.setInt(7, 0);
+           prep.setBoolean(8, true);
+           System.out.println(sql);
            prep.execute();
            jLabel8.setText("");
                
@@ -288,19 +284,25 @@ public class Interfata extends javax.swing.JFrame
 
         String username =  jTextUsernameLogin.getText() ;
         String parola =jPasswordFieldParolaLogin.getText() ;
-        String sql = "select * from persons where username = ? and parola = ?;";
+        String sql = "select * from persons where username = ? and parola = ? and online = 0";
+        String sql2 = "update Online = 1 WHERE username = ? and parola = ?";
        
         try
         {
             prep = conexiune.prepareStatement(sql);
             prep.setString(1, username);
             prep.setString(2, parola); 
+            System.out.println(parola);
             System.out.println(sql);
             result = prep.executeQuery();
-            if(result.next())
+            if(!result.next())
                 System.out.println("Totul e ok");
             else
                 jLabel8.setText("Username sau parola incorecte");
+            prep = conexiune.prepareStatement(sql2);
+            prep.setString(1, username);
+            prep.setString(2, parola);
+        
         }
         catch(Exception e)
         {
@@ -363,7 +365,6 @@ public class Interfata extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
