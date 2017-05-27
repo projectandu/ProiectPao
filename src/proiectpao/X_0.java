@@ -24,49 +24,42 @@ public class X_0
     
     public boolean checkWin(String symbol, int x, int y)
     {
-        //check col
         for(int i = 0; i < 3; i++){
             if(board[x][i] != symbol)
                 break;
             if(i == 2){
-                //report win for s
+                return true;
             }
         }
 
-        //check row
         for(int i = 0; i < 3; i++){
             if(board[i][y] != symbol)
                 break;
             if(i == 2){
-                //report win for s
+                return true;
             }
         }
 
-        //check diag
         if(x == y){
-            //we're on a diagonal
             for(int i = 0; i < 3; i++){
                 if(board[i][i] != symbol)
                     break;
                 if(i == 2){
-                    //report win for s
+                    return true;
                 }
             }
         }
 
-        //check anti diag (thanks rampion)
         if(x + y == 3 - 1){
             for(int i = 0;i<3;i++){
                 if(board[i][2-i] != symbol)
                     break;
                 if(i == 2){
-                    //report win for s
+                    return true;
                 }
             }
         }
-        
-        
-        
+ 
         return false;
     }
     
