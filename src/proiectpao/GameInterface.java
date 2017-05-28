@@ -10,9 +10,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 
 /*
@@ -30,6 +33,9 @@ public class GameInterface extends javax.swing.JFrame {
     private BufferedReader opponentMove;
     private PrintWriter yourMove;
     private String symbol;
+    private String opponentSymbol;
+    private int input;
+    private int move;
 
     //A asdf;
     /**
@@ -37,78 +43,98 @@ public class GameInterface extends javax.swing.JFrame {
      */
     public GameInterface() {
         initComponents();
-        /*Scanner sc = new Scanner(System.in);
-        System.out.println("Which player are you?");
-        symbol = sc.nextLine();
         try {
             session = new Socket(address, PORT);
-            opponentMove = new Scanner(session.getInputStream());
+            opponentMove = new BufferedReader(new InputStreamReader(session.getInputStream()));
             yourMove = new PrintWriter(session.getOutputStream(), true);
+            String mesaj = opponentMove.readLine();
+            if (mesaj.startsWith("X")) {
+                symbol = "X";
+                opponentSymbol = "0";
+            }
+            if (mesaj.startsWith("0")) {
+                symbol = "0";
+                opponentSymbol = "X";
+            }
             if (symbol.equals("0")) {
                 yourTurn = false;
                 waitForOpponent();
             } else {
-                status.setText("Your Turn!");
+                setStatus("Your turn!");
             }
         } catch (IOException ex) {
             System.out.println(ex);;
-        }*/
+        }
     }
 
-    public void waitForOpponent() throws IOException {
-        status.setText("Opponents Turn!");
-        int move = Integer.parseInt(opponentMove.readLine());
-        String opponentSymbol;
-        if (symbol.equals("X")) {
-            opponentSymbol = "0";
-        } else {
-            opponentSymbol = "X";
+    public void waitForOpponent() {
+        setStatus("Opponents turn!");
+        try {
+            move = Integer.parseInt(opponentMove.readLine());
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
-        if (move < 1 || move > 9) {
-            System.out.println("EROARE");
-        }
+        System.out.println(opponentSymbol);
         switch (move) {
             case 1:
-                jButton1.setText(opponentSymbol);
+                setButton(jButton1, 2);
                 break;
             case 2:
-                jButton2.setText(opponentSymbol);
+                setButton(jButton2, 2);
                 break;
             case 3:
-                jButton3.setText(opponentSymbol);
+                setButton(jButton3, 2);
                 break;
             case 4:
-                jButton4.setText(opponentSymbol);
+                setButton(jButton4, 2);
                 break;
             case 5:
-                jButton5.setText(opponentSymbol);
+                setButton(jButton5, 2);
                 break;
             case 6:
-                jButton6.setText(opponentSymbol);
+                setButton(jButton6, 2);
                 break;
             case 7:
-                jButton7.setText(opponentSymbol);
+                setButton(jButton7, 2);
                 break;
             case 8:
-                jButton8.setText(opponentSymbol);
+                setButton(jButton8, 2);
                 break;
             case 9:
-                jButton9.setText(opponentSymbol);
+                setButton(jButton9, 2);
                 break;
         }
-        int input = Integer.parseInt(opponentMove.readLine());
+        try {
+            input = Integer.parseInt(opponentMove.readLine());
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
         if (input == 0) {
-            status.setText("Your turn!");
-            symbol = opponentSymbol;
+            setStatus("Your turn!");
             yourTurn = true;
         } else if (input == 10) {
-            status.setText("YOU WON!");
+            setStatus("YOU WIN!");
             yourTurn = false;
         } else if (input == -10) {
-            status.setText("YOU LOST!");
+            setStatus("YOU LOSE!");
             yourTurn = false;
         }
 
+    }
+
+    public void setStatus(String status) {
+        this.status.setText(status);
+        this.status.paintImmediately(this.status.getVisibleRect());
+    }
+
+    public void setButton(javax.swing.JButton button, int symbol) {
+        if (symbol == 1) {
+            button.setText(this.symbol);
+            button.paintImmediately(button.getVisibleRect());
+        } else {
+            button.setText(this.opponentSymbol);
+            button.paintImmediately(button.getVisibleRect());
+        }
     }
 
     /**
@@ -307,204 +333,205 @@ public class GameInterface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (yourTurn && !jButton1.getText().equals("X") && !jButton1.getText().equals("0")) {
+            System.out.println(symbol);
+            setButton(jButton1,1);
+            yourMove.println("1");
             try {
-                jButton1.setText(symbol);
-                yourMove.println("1");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (yourTurn && !jButton2.getText().equals("X") && !jButton2.getText().equals("0")) {
+            setButton(jButton2,1);
+            yourMove.println("2");
             try {
-                jButton2.setText(symbol);
-                yourMove.println("2");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (yourTurn && !jButton3.getText().equals("X") && !jButton3.getText().equals("0")) {
+            setButton(jButton3,1);
+            yourMove.println("3");
             try {
-                jButton3.setText(symbol);
-                yourMove.println("3");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (yourTurn && !jButton4.getText().equals("X") && !jButton4.getText().equals("0")) {
+            setButton(jButton4,1);
+            yourMove.println("4");
             try {
-                jButton4.setText(symbol);
-                yourMove.println("4");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (yourTurn && !jButton5.getText().equals("X") && !jButton5.getText().equals("0")) {
+            setButton(jButton5,1);
+            yourMove.println("5");
             try {
-                jButton5.setText(symbol);
-                yourMove.println("5");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if (yourTurn && !jButton6.getText().equals("X") && !jButton6.getText().equals("0")) {
+            setButton(jButton6,1);
+            yourMove.println("6");
             try {
-                jButton6.setText(symbol);
-                yourMove.println("6");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         if (yourTurn && !jButton7.getText().equals("X") && !jButton7.getText().equals("0")) {
+            setButton(jButton7,1);
+            yourMove.println("7");
             try {
-                jButton7.setText(symbol);
-                yourMove.println("7");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (yourTurn && !jButton8.getText().equals("X") && !jButton8.getText().equals("0")) {
+            setButton(jButton8,1);
+            yourMove.println("8");
             try {
-                jButton8.setText(symbol);
-                yourMove.println("8");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if (yourTurn && !jButton9.getText().equals("X") && !jButton9.getText().equals("0")) {
+            setButton(jButton9,1);
+            yourMove.println("9");
             try {
-                jButton9.setText(symbol);
-                yourMove.println("9");
-                int input = Integer.parseInt(opponentMove.readLine());
-                if (input == 0) {
-                    yourTurn = false;
-                    waitForOpponent();
-                } else if (input == 10) {
-                    status.setText("YOU WON!");
-                    yourTurn = false;
-                } else if (input == -10) {
-                    status.setText("YOU LOST!");
-                    yourTurn = false;
-                }
+                input = Integer.parseInt(opponentMove.readLine());
             } catch (IOException ex) {
-                Logger.getLogger(GameInterface.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+            if (input == 0) {
+                yourTurn = false;
+                waitForOpponent();
+            } else if (input == 10) {
+                setStatus("YOU WON!");
+                yourTurn = false;
+            } else if (input == -10) {
+                setStatus("YOU LOST!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void replayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replayButtonActionPerformed
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         System.out.println("Who are you?");
         symbol = sc.nextLine();
         try {
@@ -513,13 +540,14 @@ public class GameInterface extends javax.swing.JFrame {
             yourMove = new PrintWriter(session.getOutputStream(), true);
             if (!symbol.equals("X")) {
                 yourTurn = false;
+                status.setText("Opponents Turn!");
                 waitForOpponent();
             } else {
                 status.setText("Your Turn!");
             }
         } catch (IOException ex) {
             System.out.println(ex);;
-        }
+        }*/
     }//GEN-LAST:event_replayButtonActionPerformed
 
     /**
@@ -539,13 +567,13 @@ public class GameInterface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);;
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);;
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);;
         }
         //</editor-fold>
 
