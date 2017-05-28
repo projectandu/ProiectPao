@@ -125,10 +125,12 @@ public class GameSession {
                         if (inPlayer1.ready()) {
                             replay1 = inPlayer1.readLine();
                             replay2 = inPlayer2.readLine();
+                            if ((replay1.startsWith("Replay!") || replay1.startsWith("No replay!")) && (replay2.startsWith("Replay!") || replay2.startsWith("No Replay!")))
                             finish = true;
                         } else if (inPlayer2.ready()) {
                             replay2 = inPlayer2.readLine();
                             replay1 = inPlayer1.readLine();
+                            if ((replay1.startsWith("Replay!") || replay1.startsWith("No replay!")) && (replay2.startsWith("Replay!") || replay2.startsWith("No Replay!")))
                             finish = true;
                         }
                     }
