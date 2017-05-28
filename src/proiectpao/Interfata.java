@@ -292,10 +292,9 @@ public class Interfata extends javax.swing.JFrame
             prep = conexiune.prepareStatement(sql);
             prep.setString(1, username);
             prep.setString(2, parola); 
-//            System.out.println(parola);
-//            System.out.println(sql);
+
             result = prep.executeQuery();
-           
+
             if(result != null)
                 System.out.println("Totul e ok");
             else
