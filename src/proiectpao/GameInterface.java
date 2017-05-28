@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
@@ -37,7 +38,7 @@ public class GameInterface extends javax.swing.JFrame {
     private int input;
     private int move;
 
-    //A asdf;
+    //A else if (input == 11) {                setStatus("TIE!");                yourTurn = false;            };
     /**
      * Creates new form GameInterface
      */
@@ -334,7 +335,7 @@ public class GameInterface extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (yourTurn && !jButton1.getText().equals("X") && !jButton1.getText().equals("0")) {
             System.out.println(symbol);
-            setButton(jButton1,1);
+            setButton(jButton1, 1);
             yourMove.println("1");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -350,13 +351,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (yourTurn && !jButton2.getText().equals("X") && !jButton2.getText().equals("0")) {
-            setButton(jButton2,1);
+            setButton(jButton2, 1);
             yourMove.println("2");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -372,13 +376,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (yourTurn && !jButton3.getText().equals("X") && !jButton3.getText().equals("0")) {
-            setButton(jButton3,1);
+            setButton(jButton3, 1);
             yourMove.println("3");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -394,13 +401,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (yourTurn && !jButton4.getText().equals("X") && !jButton4.getText().equals("0")) {
-            setButton(jButton4,1);
+            setButton(jButton4, 1);
             yourMove.println("4");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -416,13 +426,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (yourTurn && !jButton5.getText().equals("X") && !jButton5.getText().equals("0")) {
-            setButton(jButton5,1);
+            setButton(jButton5, 1);
             yourMove.println("5");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -438,13 +451,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if (yourTurn && !jButton6.getText().equals("X") && !jButton6.getText().equals("0")) {
-            setButton(jButton6,1);
+            setButton(jButton6, 1);
             yourMove.println("6");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -460,13 +476,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         if (yourTurn && !jButton7.getText().equals("X") && !jButton7.getText().equals("0")) {
-            setButton(jButton7,1);
+            setButton(jButton7, 1);
             yourMove.println("7");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -482,13 +501,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (yourTurn && !jButton8.getText().equals("X") && !jButton8.getText().equals("0")) {
-            setButton(jButton8,1);
+            setButton(jButton8, 1);
             yourMove.println("8");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -504,13 +526,16 @@ public class GameInterface extends javax.swing.JFrame {
             } else if (input == -10) {
                 setStatus("YOU LOST!");
                 yourTurn = false;
+            } else if (input == 11) {
+                setStatus("TIE!");
+                yourTurn = false;
             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if (yourTurn && !jButton9.getText().equals("X") && !jButton9.getText().equals("0")) {
-            setButton(jButton9,1);
+            setButton(jButton9, 1);
             yourMove.println("9");
             try {
                 input = Integer.parseInt(opponentMove.readLine());
@@ -531,24 +556,51 @@ public class GameInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void replayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replayButtonActionPerformed
-        /*Scanner sc = new Scanner(System.in);
-        System.out.println("Who are you?");
-        symbol = sc.nextLine();
-        try {
-            session = new Socket(address, PORT);
-            opponentMove = new BufferedReader(new InputStreamReader(session.getInputStream()));
-            yourMove = new PrintWriter(session.getOutputStream(), true);
-            if (!symbol.equals("X")) {
+
+        String playAgain = JOptionPane.showInputDialog("Do you want to play again?(y/n)");
+        if (playAgain.equals("y") || playAgain.equals("Y")) {
+            yourMove.println("Replay!");
+            clearBoard();
+            if (symbol.equals("X")) {
+                System.out.println("asdfasdfasdf");
+                symbol = "0";
+                opponentSymbol = "X";
+            } else if (symbol.equals("0")) {
+                symbol = "X";
+                opponentSymbol = "0";
+            }
+            if (symbol.equals("0")) {
                 yourTurn = false;
-                status.setText("Opponents Turn!");
                 waitForOpponent();
             } else {
-                status.setText("Your Turn!");
+                yourTurn = true;
+                setStatus("Your turn!");
             }
-        } catch (IOException ex) {
-            System.out.println(ex);;
-        }*/
+        } else {
+            yourMove.println("No Replay!");
+        }
     }//GEN-LAST:event_replayButtonActionPerformed
+
+    public void clearBoard() {
+        jButton1.setText("");
+        jButton1.paintImmediately(jButton1.getVisibleRect());
+        jButton2.setText("");
+        jButton2.paintImmediately(jButton2.getVisibleRect());
+        jButton3.setText("");
+        jButton3.paintImmediately(jButton3.getVisibleRect());
+        jButton4.setText("");
+        jButton4.paintImmediately(jButton4.getVisibleRect());
+        jButton5.setText("");
+        jButton5.paintImmediately(jButton5.getVisibleRect());
+        jButton6.setText("");
+        jButton6.paintImmediately(jButton6.getVisibleRect());
+        jButton7.setText("");
+        jButton7.paintImmediately(jButton7.getVisibleRect());
+        jButton8.setText("");
+        jButton8.paintImmediately(jButton8.getVisibleRect());
+        jButton9.setText("");
+        jButton9.paintImmediately(jButton9.getVisibleRect());
+    }
 
     /**
      * @param args the command line arguments
